@@ -1,0 +1,32 @@
+version: '2.1'
+
+services:
+ test_centos:
+   build: ./docker_centos
+   container_name: andy_centos_1
+   networks:
+     network_andy:
+      ipv4_address: 10.10.10.13
+
+ test_ubuntu:
+   build: ./docker_ubuntu
+   container_name: andy_ubuntu_1
+   networks:
+     network_andy:
+       ipv4_address: 10.10.10.11
+
+ test_debian:
+   build: ./docker_debian
+   container_name: andy_debian_1
+   networks:
+     network_andy:
+       ipv4_address: 10.10.10.12
+
+networks:
+  network_andy:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      - subnet: 10.10.10.0/24
+        gateway: 10.10.10.1
