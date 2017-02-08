@@ -19,6 +19,10 @@ ADD hosts /etc/hosts
 
 EXPOSE 80
 
+#Add user 
+RUN useradd -ms /bin/bash  asdf
+#CMD /bin/bash
+
 # Update the default apache site with the config we created.
 #ADD apache-config.conf /etc/apache2/sites-enabled/000-default.conf
 CMD  ["source" "/etc/apache2/envvars"]
